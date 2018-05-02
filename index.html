@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title> Composant Calendar en VueJS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/> 
+
+		<!-- some CSS for the calendar -->
+		<link rel="stylesheet/less" type="text/css" href="css/calendar.less" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.0.2/less.js"></script>
+
+		
+		<style>
+			body {
+					margin : 10px;
+				}
+		</style>
+		
+    </head>
+    <body>
+
+		<br/>
+		<div id="mycal" > 
+									<!-- premier calendrier -->
+									<my-cal 	
+									@cdmissevt="alert('aucune date selectionnee')" 
+									@cdateevt="alert('Une date selectionnee ' + $event)" >
+									</my-cal>
+		</div>
+		
+		<br/>
+	
+		<div id="app"> 
+									<!-- deuxieme  calendrier -->
+									<my-cal v-bind:gdate="(new Date(2018,0,1)).toString()" ></my-cal>
+		</div> 
+		
+
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+	   
+	   <!-- some Date addins -->
+	   <script src="js/ladate.js"></script>	
+	   
+	   <!-- the VueJS calendar component -->
+	   <script src="js/cal.js"></script>
+	   
+	   <script>					
+			var mycal = new Vue({ el: '#mycal' });
+
+			var app = new Vue({ el: '#app'	});			
+
+		</script>
+	
+    </body>
+</html>

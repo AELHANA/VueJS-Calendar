@@ -1,0 +1,122 @@
+
+/*********************** variables du composant calendrier *************/
+@calBgColor : white;
+@calBColor : rgba(21, 127, 203,2);
+@calColor : rgba(21, 127, 203, 2);
+
+@calSep1 : rgba(21, 127, 203,0.5);
+@calSep2 : rgba(21, 127, 203,0.1);
+
+@calwidth : 200px;
+
+/*********************** calendrier partie fixe de la css **************/
+/*mettre en colonne les semaines du mois */
+.month {
+	display : flex;
+	flex-direction: column;
+	font-size: 100%;
+}
+/* mettre en ligne les jours de la semaine */
+.week , .weekHead{
+	display: flex;
+	flex-direction: row;
+	width :100%; 
+}
+/* mettre en ligne l entete du calendrier */
+.calHead {
+	flex : 4;
+	text-align :center;
+}
+/* format d une journee */
+.day {
+  max-width:13%; 
+  width :13%;   
+  text-align :center;
+}
+/*********************** calendrier partie modifiable de la css **************/
+.month {
+	max-width: @calwidth;
+	width :@calwidth;
+	border : 1px solid @calBColor;
+	background-color : @calBgColor;
+}
+.weekHead:nth-child(1), .week:nth-child(2) {
+	border-bottom : 1px solid @calSep1;
+	color: @calColor;
+}
+
+.week:nth-child(2) {
+	border-bottom : 1px solid @calSep2;
+}
+
+/* les jours du mois ont une couleur particuliere */
+.inMonth {
+	color: rgba(0, 0, 0, 0.9);
+	cursor: pointer;
+}
+/* les jours des autres mois sont en fade */
+.preMonth {
+	color: rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+.postMonth {
+	color: rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+/*cahque jour occupe toute la case et a une bordure non visible */
+.day {
+	font-size: 1em;
+	border : 1px solid @calBgColor;
+}
+.weekNB {
+	color: @calColor;
+	border-right : 1px solid @calSep2;
+	/* pou cacher les num de semaine */
+	/*display : none; */
+}
+/* si un jour est clické */
+.clicked {
+	color: @calBgColor;
+	background-color : @calColor;	
+}
+/* hover et click sur les jours du mois */
+.inMonth:hover {
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.8);
+	background-color : rgba(0, 0, 0, 0.8);
+}
+/*pas de souris sur les autres jours */
+.postMonth:hover,  .preMonth:hover {
+	cursor: pointer;
+}
+/* le jour de la date du jour est encadre */
+.today {
+	border : 1px solid @calSep2;
+}
+
+.week a {
+	text-decoration: none;
+	color: @calColor;
+}
+/* lien mois suivants et annee suivante */
+.weekHead a {
+	text-decoration: none;
+	display : block;
+	width :90%;  
+}
+.weekHead a:hover  {
+	text-decoration: none;
+	color: @calBgColor;
+	background-color : @calColor;
+}
+.weekHead p{
+	margin : 0px;
+	width :100%; 
+	display : block;
+	color: @calBgColor;
+	background-color : @calColor;
+}
+.weekHead p:hover {
+	cursor: pointer;
+	color: rgba(0, 0, 0, 0.8);
+}
